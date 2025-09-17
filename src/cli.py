@@ -1,16 +1,17 @@
 from engine.game import BlackjackGame
-from players.basic_strategy import BasicStrategyPlayer
+from players.human_player import HumanPlayer
 
 def main():
     game = BlackjackGame()
-    player = BasicStrategyPlayer()
+    player = HumanPlayer()
 
-    for i in range(5):
-        p_hand, d_hand, outcome = game.play_round(player)
-        print(f"Round {i+1}:")
-        print(f"  Player: {p_hand}")
-        print(f"  Dealer: {d_hand}")
-        print(f"  Outcome: {outcome}\n")
+    while game.chips > 0:
+        outcome = game.play_round(player)
+        cont = input("\nPlay another round? (y/n): ").strip().lower()
+        if cont != "y":
+            break
+
+    print("\nGame over. Thanks for playing!")
 
 if __name__ == "__main__":
     main()
