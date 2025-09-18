@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import "./App.css";
 
 const API_URL = "http://127.0.0.1:8000";
 
-export default function App() {
+function App() {
   const [game, setGame] = useState(null);
 
   async function startGame() {
@@ -25,9 +25,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-green-900 text-white">
       <h1 className="text-3xl font-bold mb-4">Blackjack</h1>
 
-      {!game && (
-        <Button onClick={startGame}>Deal</Button>
-      )}
+      {!game && <button onClick={startGame}>Deal</button>}
 
       {game && (
         <>
@@ -39,12 +37,12 @@ export default function App() {
           </div>
 
           <div className="flex gap-2 mb-4">
-            <Button onClick={startGame}>Deal</Button>
-            <Button onClick={hit}>Hit</Button>
-            <Button onClick={stand}>Stand</Button>
-            <Button disabled>Double (placeholder)</Button>
-            <Button disabled>Split (placeholder)</Button>
-            <Button disabled>Insurance (placeholder)</Button>
+            <button onClick={startGame}>Deal</button>
+            <button onClick={hit}>Hit</button>
+            <button onClick={stand}>Stand</button>
+            <button disabled>Double (placeholder)</button>
+            <button disabled>Split (placeholder)</button>
+            <button disabled>Insurance (placeholder)</button>
           </div>
 
           {game.message && <p className="text-xl">{game.message}</p>}
@@ -53,3 +51,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;
